@@ -1,0 +1,8 @@
+# Cache and Temp dirs
+/cache
+
+# Test dirs
+/test
+
+# Packages dirs
+/packages
