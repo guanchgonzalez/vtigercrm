@@ -1,0 +1,24 @@
+Traced on 2021-07-15 09:42:05
+FileAccessForInclusion - 
+/var/www/vtigercrm/include/utils/CommonUtils.php::checkFileAccessForInclusion::388<br>
+/var/www/vtigercrm/webservice.php::checkFileAccessForInclusion::131<br>
+Traced on 2021-07-15 09:49:32
+FileAccessForInclusion - 
+/var/www/vtigercrm/include/utils/CommonUtils.php::checkFileAccessForInclusion::388<br>
+/var/www/vtigercrm/webservice.php::checkFileAccessForInclusion::131<br>
+Traced on 2021-07-15 09:50:23
+FileAccessForInclusion - 
+/var/www/vtigercrm/include/utils/CommonUtils.php::checkFileAccessForInclusion::388<br>
+/var/www/vtigercrm/webservice.php::checkFileAccessForInclusion::131<br>
+Traced on 2021-07-15 09:53:49
+FileAccessForInclusion - 
+/var/www/vtigercrm/include/utils/CommonUtils.php::checkFileAccessForInclusion::388<br>
+/var/www/vtigercrm/webservice.php::checkFileAccessForInclusion::131<br>
+Traced on 2021-07-15 10:06:11
+FileAccessForInclusion - 
+/var/www/vtigercrm/include/utils/CommonUtils.php::checkFileAccessForInclusion::388<br>
+/var/www/vtigercrm/webservice.php::checkFileAccessForInclusion::131<br>
+Traced on 2021-07-15 10:07:53
+FileAccessForInclusion - 
+/var/www/vtigercrm/include/utils/CommonUtils.php::checkFileAccessForInclusion::388<br>
+/var/www/vtigercrm/webservice.php::checkFileAccessForInclusion::131<br>

@@ -44,13 +44,15 @@ require_once("berliCRM_WS_Curl_Class20.php");
 // provide user's credentials
 //
 // CRM URL
-$url = "https://vtiger.talecsystem.com/webservice.php";
+$url = "http://vtiger.talecsystem.com/webservice.php";
 //
 // CRM user (CRM login name)
-$username = "admin";
+#$username = "admin";
+$username = 'admin';
 //
 // CRM user's access key (from My preferences menu)
-$accessKey = "Aw3535$$";
+#$accessKey = "Aw3535$$";
+$accessKey = 'etrtYpzoQExjbh0';
 //
 //========== EXAMPLE 1: Login Start ==================================================================+
 //
@@ -93,14 +95,14 @@ else {
 //
 // list the properties of a specific module
 // use Contacts module
-$describe = $wsC->operation("describe", array("elementType" => "Contacts"), "GET");
+$describe = $wsC->operation("describe", array("elementType" => "Accounts"), "GET");
 
 if (!$describe) {
 	// ERROR handling if describe operation was not successful
 	echo $wsC->errorMsg;
 }
 else {
-	echo "<b>Contacts Fields:</b><br>";
+	echo "<b>Accounts Fields:</b><br>";
 	echo "<table border='1'>";
 		echo "<tr>";
 			echo "<th>Field Label</th>";
@@ -126,16 +128,16 @@ else {
 //
 // get contact id information from one Contact
 // shows use of limit
-$first_contact_id ='';
-$Contact_Details = $wsC->operation("query", array("query" => "SELECT * FROM Contacts limit 1;"), "GET");
+$first_account_id ='';
+$Account_Details = $wsC->operation("query", array("query" => "SELECT * FROM Accounts limit 1;"), "GET");
 if ($wsC->errorMsg) {
 	// ERROR handling if describe operation was not successful
 	echo $wsC->errorMsg;
 }
 else {
-	//keep Contact ID for next example 5
-	$first_contact_id = $Contact_Details[0]['id'];
-	echo "contact id: ".$first_contact_id."<br>";
+	//keep Account ID for next example 5
+	$first_account_id = $Account_Details[0]['id'];
+	echo "account id: ".$first_account_id."<br>";
 }
 
 //========== EXAMPLE 4: query End ==================================================================+
@@ -144,16 +146,19 @@ else {
 // prerequisite: you are logged in and the session is still valid
 //
 // get information from same Contact as found in example 4
-if ($first_contact_id !='') {
-	$Contact_Details = $wsC->operation("retrieve", array("id" => $first_contact_id), "GET");
+if ($first_account_id !='') {
+	$Account_Details = $wsC->operation("retrieve", array("id" => $first_account_id), "GET");
 	if ($wsC->errorMsg) {
 		// ERROR handling if describe operation was not successful
 		echo $wsC->errorMsg;
 	}
 	else {
-		echo "First Name: ".$Contact_Details['firstname']."<br>";
-		echo "Last Name: ".$Contact_Details['lastname']."<br>";
-		echo "Related Account ID: ".$Contact_Details['account_id']."<br>";
+		echo "Nombre de Cuenta: ".$Account_Details['accountname']."<br>";
+		echo "Número de Cuenta: ".$Account_Details['account_no']."<br>";
+		echo "Teléfono Principal: ".$Account_Details['phone']."<br>";
+		echo "De Correo Electrónico Principal: ".$Account_Details['email1']."<br>";
+		echo "Propietario: ".$Account_Details['ownership']."<br>";
+		echo "Usuario portal WP: ".$Account_Details['wpuser']."<br>";
 	}
 }
 //========== EXAMPLE 5: retrieve End ===============================================================+
@@ -162,24 +167,24 @@ if ($first_contact_id !='') {
 // prerequisite: you are logged in and the session is still valid
 //
 // update Salutation for the same Contact as found in example 4
-if ($first_contact_id !='') {
-	$Contact_Details = $wsC->operation("retrieve", array("id" => $first_contact_id), "GET");
+if ($first_account_id !='') {
+	$Account_Details = $wsC->operation("retrieve", array("id" => $first_account_id), "GET");
 	if ($wsC->errorMsg) {
 		// ERROR handling if describe operation was not successful
 		echo $wsC->errorMsg;
 	}
 	else {
 		// change field contents for existing data entry
-		$Contact_Details['salutationtype'] = 'Dear';
+		$Account_Details['otherphone'] = '+34922290940';
 		// update existing data entry
-		$result = $wsC->operation("update", array("element" => json_encode($Contact_Details)), "POST");
+		$result = $wsC->operation("update", array("element" => json_encode($Account_Details)), "POST");
 		if ($wsC->errorMsg) {
 			// ERROR handling if describe operation was not successful
 			echo $wsC->errorMsg;
 		}
 		else {
 			// check the update result
-			echo "Salutation: ".$result['salutationtype']."<br>";
+			echo "Teléfono Secundario: ".$result['otherphone']."<br>";
 		}
 	}
 }
